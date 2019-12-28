@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var Blogpost = require("./models/blogpost");
+var User = require("./models/user");
 
 var data = [
     {

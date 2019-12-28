@@ -1,12 +1,17 @@
 var express = require('express'),
-	app = express(),
-	mongoose = require('mongoose'),
+	app = express()
+
+var bodyParser = require('body-parser')
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
+var	mongoose = require('mongoose'),
 	indexRoutes = require("./routes/index"),
-	Blogpost  = require("./models/blogpost"),
+	User  = require("./models/user"),
 	seedDB = require('./seeds'),
 	tone = require('tone');
 
-mongoose.connect('mongodb://testuser:testpassword1@ds341825.mlab.com:41825/samsblog', { useNewUrlParser: true });
+mongoose.connect('mongodb://testuser:password1@ds359118.mlab.com:59118/foodhighscores', { useNewUrlParser: true });
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 // seedDB(); 

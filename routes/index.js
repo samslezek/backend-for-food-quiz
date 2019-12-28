@@ -1,33 +1,33 @@
 var express = require("express");
+app=express();
+var User = require("../models/user");
 var router  = express.Router();
-var Blogpost = require("../models/blogpost");
 
-router.get("/", function(req, res){
-    res.render('home')
+
+router.get("/react", function(req, res){
+	console.log('got this call')
+	User.find({}).sort({score: -1}).limit(5).exec( 
+	    function(err, allUsers) {
+	    	if (err) {
+	    		console.log (err)
+	    	} else {
+	        res.json(allUsers)
+	    	}
+	    }
+	);
+    ;
 });
 
-router.get("/about", function(req, res){
-    res.render('about')
-});
-
-router.get("/piano", function(req, res){
-    res.render('piano')
-});
-
-router.get("/basic-web-music-api", function(req, res){
-    res.render('basic')
-});
-
-router.get("/garageband", function(req, res){
-    res.render('garageband')
-});
-
-router.get("/uber", function(req, res){
-    res.render('uber')
-});
-
-router.get("/snap", function(req, res){
-    res.render('snap')
+router.post("/react", function(req, res){
+    console.log(req.body)
+    // var myUser = new User({name: req.body.name, score: req.body.score})
+    // myUser.save()
+    // .then(item => {
+    //   res.send("item saved to database");
+    // })
+    // .catch(err => {
+    //   res.status(400).send("unable to save to database");
+    // });
 });
 
 module.exports = router;
