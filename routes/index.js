@@ -5,7 +5,7 @@ var User = require("../models/user");
 var router  = express.Router();
 
 // Serve static files from the React app
-router.use(express.static(path.join(__dirname, '../client/build')));
+router.use(express.static(path.join(__dirname, '/../client/build')));
 
 router.get("/react", function(req, res){
 	console.log('got this call')
