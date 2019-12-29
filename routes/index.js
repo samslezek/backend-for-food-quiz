@@ -19,15 +19,14 @@ router.get("/react", function(req, res){
 });
 
 router.post("/react", function(req, res){
-    console.log(req.body)
-    // var myUser = new User({name: req.body.name, score: req.body.score})
-    // myUser.save()
-    // .then(item => {
-    //   res.send("item saved to database");
-    // })
-    // .catch(err => {
-    //   res.status(400).send("unable to save to database");
-    // });
+    var myUser = new User({name: req.body.name, score: req.body.score})
+    myUser.save()
+    .then(item => {
+      res.send("item saved to database");
+    })
+    .catch(err => {
+      res.status(400).send("unable to save to database");
+    });
 });
 
 module.exports = router;
