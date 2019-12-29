@@ -16,7 +16,7 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 // seedDB(); 
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3001;
 
 app.use("/", indexRoutes);
 
