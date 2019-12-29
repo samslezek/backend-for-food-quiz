@@ -1,4 +1,5 @@
 var express = require("express");
+var path = require('path');
 app=express();
 var User = require("../models/user");
 var router  = express.Router();
@@ -31,7 +32,7 @@ router.post("/react", function(req, res){
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
-app.get('/reactapp', (req, res) => {
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
