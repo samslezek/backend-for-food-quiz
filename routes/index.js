@@ -5,7 +5,7 @@ var User = require("../models/user");
 var router  = express.Router();
 
 // Serve static files from the React app
-router.use(express.static(path.join(__dirname, '/../client/build')));
+router.use(express.static(path.join(__dirname, '../client/build')));
 
 router.get("/react", function(req, res){
 	console.log('got this call')
@@ -35,7 +35,7 @@ router.post("/react", function(req, res){
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 router.get('/reactapp', function(req, res){
-  res.sendFile(path.join(__dirname+'/../../client/build/index.html'));
+  res.sendFile(path.join(__dirname+'/../client/build/index.html'));
 });
 
 module.exports = router;
