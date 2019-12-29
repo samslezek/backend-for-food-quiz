@@ -1,6 +1,6 @@
 var express = require('express'),
     path = require('path'),
-	app = express(),
+	app = express()
 
 var bodyParser = require('body-parser')
 app.use(bodyParser.json())
