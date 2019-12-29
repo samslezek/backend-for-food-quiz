@@ -7,9 +7,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 var	mongoose = require('mongoose'),
-	indexRoutes = require("./routes/index"),
 	User  = require("./models/user"),
-	seedDB = require('./seeds'),
 	tone = require('tone');
 
 mongoose.connect('mongodb://testuser:password1@ds359118.mlab.com:59118/foodhighscores', { useNewUrlParser: true });
@@ -48,7 +46,7 @@ app.post("/react", function(req, res){
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
-app.get('/reactapp', function(req, res){
+app.get('*', function(req, res){
   res.sendFile(path.join(__dirname+'/client/build/index.html'), function (err) {
   	if (err) {
   		res.status(500).send(err)

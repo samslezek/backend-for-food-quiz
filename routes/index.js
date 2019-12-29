@@ -1,6 +1,6 @@
 var express = require("express");
 var path = require('path');
-app=express();
+var app=express();
 var User = require("../models/user");
 var router  = express.Router();
 
