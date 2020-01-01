@@ -88,8 +88,8 @@ class FoodApp extends Component {
 				return ( 
 				<div className='container'>
 					<h3>Food Trivia Results</h3>
-					<p>You got <strong>{this.state.correctAnswers}/{this.state.totalAnswers} questions correct.</strong></p>
 					<br />
+					<p>You got <strong>{this.state.correctAnswers}/{this.state.totalAnswers} questions correct.</strong></p>
 					<NameSubmitForm currentScore={this.state.correctAnswers} submitscore={() => this.setState({submittedScore:true})} resetfunc={() => {this.resetGame()}} />
 					<HighScores />
 				</div>

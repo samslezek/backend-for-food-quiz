@@ -54,3 +54,46 @@ form {
     box-shadow: 3px 3px 0px transparent;
     transition: 0.5s;
     }
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.ordered {
+  counter-reset: rank
+}
+
+div .table {
+  width:100%;
+}
+
+.high-score::before {
+  counter-increment: rank;
+  content: counter(rank) ". "
+}
+
+.container {
+  width:600px;
+  margin:auto;
+  text-align:center;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+input {
+  margin-bottom: 10px;
+}

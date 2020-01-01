@@ -15,6 +15,7 @@ class HighScores extends Component {
 	      .then(users => this.setState({highscores:users}));
 	  }, delayInMilliseconds);
 	}
+
     
 
 	render = (props) => {
@@ -24,25 +25,23 @@ class HighScores extends Component {
 				<ul>
 				
 				</ul>
-	    <div class="row col-md-6 col-md-offset-2 custyle">
-	    <table class="table table-striped custab">
+	    <table className="table table-striped custab ordered">
 	    <thead>
 	        <tr>
-	            <th>Name</th>
-	            <th>Score</th>
+	            <th className='left'>&nbsp; &nbsp; &nbsp; Name</th>
+	            <th className='center'>Score</th>
 	        </tr>
 	    </thead>
 	    		{this.state.highscores.map(
 				 	({name,score}) => ( 
 				 	<React.Fragment>
 				 	<tr>
-					<td>{name}</td>
-					<td>{score}</td>
+					<td className='high-score left'>&nbsp; {name}</td>
+					<td className='center'>{score}</td>
 					</tr>
 					</React.Fragment>
 					 ))}
 	    </table>
-	    </div>
 			</React.Fragment>
 			)
 	}
