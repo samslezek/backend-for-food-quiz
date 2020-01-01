@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get("/react", function(req, res){
 	console.log('got this call')
-	User.find({}).sort({score: -1}).limit(5).exec( 
+	User.find({}).sort({score: -1}).limit(10).exec( 
 	    function(err, allUsers) {
 	    	if (err) {
 	    		console.log (err)
