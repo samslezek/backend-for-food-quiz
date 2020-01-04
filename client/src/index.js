@@ -6,7 +6,7 @@ import foodData from './foodData/foodData.json';
 import Question from './components/Question';
 import HighScores from './components/HighScores';
 import NameSubmitForm from './components/NameSubmitForm';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/style.css';
 
 
@@ -24,7 +24,8 @@ class FoodApp extends Component {
 				foodBank: randomFoodData,
 				correctAnswers: 0,
 				totalAnswers: 0,
-				submittedScore:false
+				submittedScore:false,
+				goNext:false
 		}
 		// console.log(this.state.foodBank[0].food)
 		this.createQuiz = this.createQuiz.bind(this);
@@ -43,7 +44,13 @@ class FoodApp extends Component {
 					totalAnswers : this.state.totalAnswers+1
 				})
 			}
-			console.log('finished updating parent state to ' + this.state.correctAnswers)
+			if(this.state.totalAnswers==9) {
+				console.log('it is 10')
+				document.getElementById('go-next').setAttribute('style','display:block;margin-top:20px;background-color:blue')
+			} else {
+				console.log(this.state.totalAnswers)
+			}
+			console.log('finished updating parent state to ' + this.state.totalAnswers)
 	}
 
 	createQuiz = () => {
@@ -76,29 +83,40 @@ class FoodApp extends Component {
 	}
 
 	render() {
-		if (this.state.totalAnswers<10){
+		if (this.state.totalAnswers<10 || this.state.goNext==false){
 			return ( 
+				<React.Fragment>
+				<div className='top-link'><a className='site-link' href='http://www.samslezek.com'>Go Back to Sam's Website</a></div>
 				<div className='container'>
-					<h1>Food Trivia</h1>
-					<p><em>The below questions select foods from the Instacart database. Try to select the more popular food in each question, as defined by % of Instacart orders containing that food.</em></p>
+					    <h1>Food Trivia</h1>
+    					<p><em>Pick the more popular food, as defined by % of Instacart orders containing that food. </em></p>
 					{this.createQuiz()}
+					<button id='go-next' onClick={() => this.setState({goNext:true})}>Finish</button>
 				</div>
+				</React.Fragment>
 				)
-			} else if (this.state.submittedScore==false){
+			}
+			else if (this.state.submittedScore==false){
 				return ( 
+				<React.Fragment>
+				<div className='top-link'><a className='site-link' href='http://www.samslezek.com'>Go Back to Sam's Website</a></div>	
 				<div className='container'>
-					<h3>Food Trivia Results</h3>
-					<br />
-					<p>You got <strong>{this.state.correctAnswers}/{this.state.totalAnswers} questions correct.</strong></p>
+    <h1>Food Trivia</h1>
+    <h3>Results</h3>
+    <p>You got <strong>{this.state.correctAnswers}/{this.state.totalAnswers}</strong> questions correct. You can submit your name to the High Scores list.</p>
 					<NameSubmitForm currentScore={this.state.correctAnswers} submitscore={() => this.setState({submittedScore:true})} resetfunc={() => {this.resetGame()}} />
 					<HighScores />
 				</div>
+				</React.Fragment>
 				)
 			}
 			return (
 			<React.Fragment>
+				<div className='top-link'><a className='site-link' href='http://www.samslezek.com'>Go Back to Sam's Website</a></div>
+				<div className='container'>
 				<HighScores key={this.state.submittedScore} />
-				<button className='btn btn-primary' onClick={() => {this.resetGame()}}>Play Again</button>
+				<button className='play-again-solo' onClick={() => {this.resetGame()}}>Play Again</button>
+				</div>
 			</React.Fragment>);
 		
 	}

@@ -22,27 +22,47 @@ class HighScores extends Component {
 		return (
 			<React.Fragment>
 				<h3>High Scores</h3>
-				<ul>
-				
-				</ul>
-	    <table className="table table-striped custab ordered">
-	    <thead>
-	        <tr>
-	            <th className='left'>&nbsp; &nbsp; &nbsp; Name</th>
-	            <th className='center'>Score</th>
-	        </tr>
-	    </thead>
-	    		{this.state.highscores.map(
+				<table id="highscores">
+					<tr>
+						<th>Name</th>
+						<th>Score</th>
+					</tr>
+					{this.state.highscores.map(
 				 	({name,score}) => ( 
 				 	<React.Fragment>
 				 	<tr>
-					<td className='high-score left'>&nbsp; {name}</td>
-					<td className='center'>{score}</td>
+					<td>{name}</td>
+					<td>{score}/10</td>
 					</tr>
 					</React.Fragment>
 					 ))}
-	    </table>
+    	</table>
 			</React.Fragment>
+
+
+			// <React.Fragment>
+			// 	<h3>High Scores</h3>
+			// 	<ul>
+				
+			// 	</ul>
+	    // <table className="table table-striped custab ordered">
+	    // <thead>
+	    //     <tr>
+	    //         <th className='left'>&nbsp; &nbsp; &nbsp; Name</th>
+	    //         <th className='center'>Score</th>
+	    //     </tr>
+	    // </thead>
+	    // 		{this.state.highscores.map(
+			// 	 	({name,score}) => ( 
+			// 	 	<React.Fragment>
+			// 	 	<tr>
+			// 		<td className='high-score left'>&nbsp; {name}</td>
+			// 		<td className='center'>{score}</td>
+			// 		</tr>
+			// 		</React.Fragment>
+			// 		 ))}
+	    // </table>
+			// </React.Fragment>
 			)
 	}
 }
